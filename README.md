@@ -16,6 +16,8 @@
   - https://zenn.dev/nickel/articles/9c5b8cd56e76c0
 7. ChatGPTに「ChatGPTに質問出来るslack botのtypescriptのコードを書いて下さい」とリクエストしてみた件
   - https://note.com/yoshihiko_k/n/na3181e9d1581
+8. ChatGPTに以下の質問
+  - 「BoltとTypeScriptを使って、ChatGPTの回答結果を返すSlack Botを作る方法を教えてください」
 
 # 使用技術
 - Slack Bolt
