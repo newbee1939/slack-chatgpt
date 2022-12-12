@@ -22,39 +22,38 @@
   - https://github.com/slackapi/bolt-js
 10. [x] Slackアプリをまずは作る必要がある
   - https://slack.dev/bolt-js/ja-jp/tutorial/getting-started
+11. Bolt フレームワークを使って Slack Bot を作ろう(公式のチュートリアル)
+  - https://api.slack.com/lang/ja-jp/hello-world-bolt
 
 # 学びメモ
 - イベント発生時に、Slackサーバーからペイロードを受け取るには、イベントのサブスクリプションの設定が必要 
   - Slack ワークスペースで発生するイベント (メッセージが投稿されたときや、メッセージに対するリアクションが投稿されたときなど) をリッスンするには、Events API を使用してイベントタイプに登録します。
-- Glitchでnode.jsのバージョンを変更する
+- Glitchでnode.jsのバージョンを変更する方法
   - https://help.glitch.com/kb/article/59-can-i-change-the-version-of-node-js-my-project-uses/  
 
-# 使用技術
-- Slack Bolt
+# 使用技術(個人開発の際は、一つは使ったことない技術を組み込む)
+- Slack Bolt(フレームワーク)
+- Node.js
 - TypeScript
 - JavaScript
 - Docker
 - Cloud Run(Cloud Run Jobs)
+  - Cloud Run Jobsとか、Cloud RunのAlways on CPUとか記事にまとめたい
 - ngrok
 - Glitch
   - ngrokと同じようなもの？
-    - 記事にまとめたい
+    - サクッと記事にまとめたい
   - https://glitch.com/dashboard
 - Vercel
 
 # その他
 - サンプルテスト用Slcakチャンネル
   - https://app.slack.com/client/T04E9JJ0VC7/C04EHGWSKQW
-- Slack App
+- サンプル用Slack App
   - https://api.slack.com/apps/A04EM70BXQD
   - xoxbから始まるトークンとかはこれ
     - https://api.slack.com/apps/A04EM70BXQD/oauth?success=1
-- 動作の仕組みと流れ
-- Tokenがきちんと使えるのか確認する
+- Tokenがきちんと使えるのか確認する方法
   - https://zenn.dev/apo_zenn/articles/855ab0a46eb815
-- Slack API を使用してメッセージを投稿する
-  - https://zenn.dev/kou_pg_0131/articles/slack-api-post-message
-- Bolt フレームワークを使って Slack Bot を作ろう
-  - https://api.slack.com/lang/ja-jp/hello-world-bolt
-- GitのURL
+- 対象のGitリポジトリのURL
   - https://github.com/newbee1939/slack-chatgpt.git
