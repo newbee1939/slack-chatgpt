@@ -56,3 +56,5 @@
   - https://zenn.dev/kou_pg_0131/articles/slack-api-post-message
 - Bolt フレームワークを使って Slack Bot を作ろう
   - https://api.slack.com/lang/ja-jp/hello-world-bolt
+- GitのURL
+  - https://github.com/newbee1939/slack-chatgpt.git
