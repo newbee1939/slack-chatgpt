@@ -30,11 +30,23 @@
 # 使用技術
 - Slack Bolt
 - TypeScript
+- JavaScript
 - Docker
-- Cloud Run
+- Cloud Run(Cloud Run Jobs)
 - ngrok
+- Glitch
+  - ngrokと同じようなもの？
+- Vercel
 
 # その他
 - サンプルテスト用Slcakチャンネル
   - https://app.slack.com/client/T04E9JJ0VC7/C04EHGWSKQW
+- Slack App
+  - https://api.slack.com/apps/A04EM70BXQD
+  - xoxbから始まるトークンとかはこれ
+    - https://api.slack.com/apps/A04EM70BXQD/oauth?success=1
 - 動作の仕組みと流れ
+- Tokenがきちんと使えるのか確認する
+  - https://zenn.dev/apo_zenn/articles/855ab0a46eb815
+- Slack API を使用してメッセージを投稿する
+  - https://zenn.dev/kou_pg_0131/articles/slack-api-post-message
