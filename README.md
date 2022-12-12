@@ -31,20 +31,22 @@
 - Glitchでnode.jsのバージョンを変更する方法
   - https://help.glitch.com/kb/article/59-can-i-change-the-version-of-node-js-my-project-uses/  
 
-# 使用技術(個人開発の際は、一つは使ったことない技術を組み込む)
+# 使用技術(個人開発の際は、一つは使ったことない技術を組み込む)(それぞれのデプロイ方法を記事にまとめる)
 - Slack Bolt(フレームワーク)
 - Node.js
 - TypeScript
 - JavaScript
-- Docker
-- Cloud Run(Cloud Run Jobs)
+- Docker(ngrokを使ったローカル開発環境)
+- Cloud Run(Cloud Run Jobs)(デプロイ先)
   - Cloud Run Jobsとか、Cloud RunのAlways on CPUとか記事にまとめたい
-- ngrok
-- Glitch
+- ngrok(ローカル開発環境)
+- Glitch(デプロイ先)
   - ngrokと同じようなもの？
     - サクッと記事にまとめたい
   - https://glitch.com/dashboard
-- Vercel
+- Vercel(デプロイ先)
+- GitHub Actionsでそれぞれの環境に自動デプロイ出来るようにする
+  - 最新のものを取り込む
 
 # その他
 - サンプルテスト用Slcakチャンネル
@@ -57,3 +59,5 @@
   - https://zenn.dev/apo_zenn/articles/855ab0a46eb815
 - 対象のGitリポジトリのURL
   - https://github.com/newbee1939/slack-chatgpt.git
+- Event Subscriptionsの設定
+  - https://api.slack.com/apps/A04EM70BXQD/event-subscriptions?
