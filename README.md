@@ -24,6 +24,12 @@
   - https://slack.dev/bolt-js/ja-jp/tutorial/getting-started
 11. Bolt フレームワークを使って Slack Bot を作ろう(公式のチュートリアル)
   - https://api.slack.com/lang/ja-jp/hello-world-bolt
+12. GPT-3 APIの利用申請から承認まで
+  - https://qiita.com/nissan_lab/items/8d0a887b6d32881d6d80
+13. OpenAIの公式ドキュメント
+  - https://beta.openai.com/docs/introduction/overview
+  - この辺でリクエストの作り方学べそう
+    - https://beta.openai.com/docs/api-reference/introduction
 
 # 学びメモ
 - イベント発生時に、Slackサーバーからペイロードを受け取るには、イベントのサブスクリプションの設定が必要 
@@ -63,3 +69,11 @@
   - https://github.com/newbee1939/slack-chatgpt.git
 - Event Subscriptionsの設定
   - https://api.slack.com/apps/A04EM70BXQD/event-subscriptions?
+
+# TODO
+- とりあえずGlitchを連携させて、Slackでメッセージを送ったときに返答するようにしたい（いまここ！）
+- ローカルでngrokで開発できるようにする
+- GPT-3を組み込んでみる
+- 会社に導入を提案してみたい
+  - 社員の生産性はかなり上がりそう
+  - 使わない理由がない
