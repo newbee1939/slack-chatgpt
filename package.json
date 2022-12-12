@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/newbee1939/slack-chatgpt#readme",
   "dependencies": {
-    "@slack/bolt": "^3.12.2"
+    "@slack/bolt": "^3.12.2",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "@types/node": "^18.11.13",
