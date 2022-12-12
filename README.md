@@ -26,6 +26,8 @@
 # 学びメモ
 - イベント発生時に、Slackサーバーからペイロードを受け取るには、イベントのサブスクリプションの設定が必要 
   - Slack ワークスペースで発生するイベント (メッセージが投稿されたときや、メッセージに対するリアクションが投稿されたときなど) をリッスンするには、Events API を使用してイベントタイプに登録します。
+- Glitchでnode.jsのバージョンを変更する
+  - https://help.glitch.com/kb/article/59-can-i-change-the-version-of-node-js-my-project-uses/  
 
 # 使用技術
 - Slack Bolt
@@ -36,6 +38,8 @@
 - ngrok
 - Glitch
   - ngrokと同じようなもの？
+    - 記事にまとめたい
+  - https://glitch.com/dashboard
 - Vercel
 
 # その他
@@ -50,3 +54,5 @@
   - https://zenn.dev/apo_zenn/articles/855ab0a46eb815
 - Slack API を使用してメッセージを投稿する
   - https://zenn.dev/kou_pg_0131/articles/slack-api-post-message
+- Bolt フレームワークを使って Slack Bot を作ろう
+  - https://api.slack.com/lang/ja-jp/hello-world-bolt
