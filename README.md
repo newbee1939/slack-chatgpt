@@ -14,6 +14,7 @@
   - https://zenn.dev/ryurock/articles/qiita-20200727-b54d6fa40fb5e7f486ee
 6. [] OpenAIの言語モデル、GPT-3を社内Slackに導入したら捗りすぎてやばい
   - https://zenn.dev/nickel/articles/9c5b8cd56e76c0
+  - AIに前提知識を伝える、 prompt プロパティが重要です。この prompt で、うまく値を設定することで、弊社のおぷたんは対話形式で質問することも可能にしています
 7. [] ChatGPTに「ChatGPTに質問出来るslack botのtypescriptのコードを書いて下さい」とリクエストしてみた件
   - https://note.com/yoshihiko_k/n/na3181e9d1581
 8. [] ChatGPTに以下の質問
@@ -36,6 +37,28 @@
   - Slack ワークスペースで発生するイベント (メッセージが投稿されたときや、メッセージに対するリアクションが投稿されたときなど) をリッスンするには、Events API を使用してイベントタイプに登録します。
 - Glitchでnode.jsのバージョンを変更する方法
   - https://help.glitch.com/kb/article/59-can-i-change-the-version-of-node-js-my-project-uses/  
+- GlitchのURL（エンドポイント）をSlackに設定
+  - https://techblog.cartaholdings.co.jp/entry/archives/3864
+- GlitchでGitHubからコードをimportする
+  - https://help-glitch-com.translate.goog/kb/article/20-importing-code-from-github/?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=sc
+- OpenAI APIの始め方
+  - npm install openai
+  - 以下のページからAPIキーを取得
+    - https://beta.openai.com/account/api-keys
+  - 全てのHTTPリクエストのHEADに以下のようにキーを含ませる必要がある
+    - Authorization: Bearer YOUR_API_KEY
+  - リクエストの例
+    - curlの場合
+      - curl https://api.openai.com/v1/models -H 'Authorization: Bearer YOUR_API_KEY'
+    - Node.jsの場合
+      - `import { Configuration, OpenAIApi } from "openai";
+        const configuration = new Configuration({
+            apiKey: process.env.OPENAI_API_KEY,
+        });
+        const openai = new OpenAIApi(configuration);
+        const response = await openai.listEngines();`
+  - 細かいリクエストの作り方はこちらに
+    - https://beta.openai.com/docs/api-reference/making-requests
 
 # 使用技術(個人開発の際は、一つは使ったことない技術を組み込む)(それぞれのデプロイ方法を記事にまとめる)
 - Slack Bolt(フレームワーク)
@@ -49,6 +72,7 @@
 - Glitch(デプロイ先)
   - ngrokと同じようなもの？
     - サクッと記事にまとめたい
+  - なぜかうまくいかないので一旦スキップ（リポジトリimportのところ） 
   - https://glitch.com/dashboard
 - Vercel(デプロイ先)
 - GitHub Actionsでそれぞれの環境に自動デプロイ出来るようにする
