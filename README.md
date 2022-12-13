@@ -59,6 +59,8 @@
         const response = await openai.listEngines();`
   - 細かいリクエストの作り方はこちらに
     - https://beta.openai.com/docs/api-reference/making-requests
+  - promptとかの設定方法はこちらを見たら分かる
+    - https://github.com/openai/openai-node
 
 # 使用技術(個人開発の際は、一つは使ったことない技術を組み込む)(それぞれのデプロイ方法を記事にまとめる)
 - Slack Bolt(フレームワーク)
