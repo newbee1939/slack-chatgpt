@@ -34,6 +34,11 @@
     - https://beta.openai.com/docs/api-reference/introduction
 
 # 学びメモ
+- ngrokのインストールと起動
+  - dockerのngrokだと内部の通信しかできない？？わからんけど
+  - 普通にMacにインストール 
+    - 手順:https://ngrok.com/download
+    - ngrok configの設定:https://dashboard.ngrok.com/get-started/setup
 - イベント発生時に、Slackサーバーからペイロードを受け取るには、イベントのサブスクリプションの設定が必要 
   - Slack ワークスペースで発生するイベント (メッセージが投稿されたときや、メッセージに対するリアクションが投稿されたときなど) をリッスンするには、Events API を使用してイベントタイプに登録します。
 - Glitchでnode.jsのバージョンを変更する方法
@@ -76,7 +81,7 @@
 - Glitch(デプロイ先)
   - ngrokと同じようなもの？
     - サクッと記事にまとめたい
-  - なぜかうまくいかないので一旦スキップ（リポジトリimportのところ） 
+  - なぜかうまくいかないので一旦スキップ。。（リポジトリimportのところが動かない。。） 
   - https://glitch.com/dashboard
 - Vercel(デプロイ先)
 - GitHub Actionsでそれぞれの環境に自動デプロイ出来るようにする
@@ -100,8 +105,9 @@
 
 # TODO
 - とりあえずGlitchを連携させて、Slackでメッセージを送ったときにシンプルなメッセージを返答するようにしたい（いまここ！）
-- ローカルでngrokで開発できるようにする
 - GPT-3を組み込んでみる
 - 会社に導入を提案してみたい
   - 社員の生産性はかなり上がりそう
   - 使わない理由がない
+- 全ての工程を自動化する
+  - できればngrokもDockerにしたい

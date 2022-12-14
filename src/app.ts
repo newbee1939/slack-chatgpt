@@ -12,6 +12,11 @@ app.message("hello", async ({say}) => {
   await say("Hello!");
 });
 
+app.command(`/echo`, async ({ command, ack, say }) => {
+  ack()
+  say(`発言: ${command.text}`)
+});
+
 (async () => {
   // Start your app
   // Slack Boltはport 3000で起動

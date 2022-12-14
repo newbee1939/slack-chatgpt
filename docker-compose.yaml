@@ -7,4 +7,7 @@ services:
       - ${NGROK_PORT:-4040}:4040
     environment:
       # うまくいかない
+      # そもそもここの疎通がうまくいってなさそう
+      # dockerじゃないngrokをそのまま使ってみるか
+        - うまくいった！
       NGROK_PORT: 127.0.0.1:3000
