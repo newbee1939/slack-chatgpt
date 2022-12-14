@@ -9,6 +9,7 @@ const app = new App({
 app.message("hello", async ({say}) => {
   console.log("helloに来たよ！！");
   // say() sends a message to the channel where the event was triggered
+
   await say("Hello!");
 });
 
