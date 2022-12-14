@@ -84,6 +84,11 @@
   - なぜかうまくいかないので一旦スキップ。。（リポジトリimportのところが動かない。。） 
   - https://glitch.com/dashboard
 - Vercel(デプロイ先)
+- AWS Lambda
+  - https://slack.dev/bolt-js/ja-jp/deployments/aws-lambda
+  - 本にある？
+- Heroku
+  - https://slack.dev/bolt-js/ja-jp/deployments/heroku
 - GitHub Actionsでそれぞれの環境に自動デプロイ出来るようにする
   - 最新のものを取り込む
 - Jest
