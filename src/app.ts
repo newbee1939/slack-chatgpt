@@ -1,4 +1,5 @@
 import { App } from "@slack/bolt";
+import { Configuration, OpenAIApi } from "openai";
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -7,6 +8,14 @@ const app = new App({
 
 // これで良さそう
 app.event("app_mention", async({say}) => {
+  // OpenAIの処理
+  const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+  const openai = new OpenAIApi(configuration);
+  const response = await openai.listEngines();
+  console.log(response);
+
   await say("メンションされたので返信!");
 });
 
