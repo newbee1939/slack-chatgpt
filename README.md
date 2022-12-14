@@ -25,6 +25,7 @@
   - https://slack.dev/bolt-js/ja-jp/tutorial/getting-started
 11. Bolt フレームワークを使って Slack Bot を作ろう(公式のチュートリアル)
   - https://api.slack.com/lang/ja-jp/hello-world-bolt
+  - イベントの設定方法はこちらにある
 12. GPT-3 APIの利用申請から承認まで
   - https://qiita.com/nissan_lab/items/8d0a887b6d32881d6d80
 13. OpenAIの公式ドキュメント
@@ -71,6 +72,7 @@
 - Cloud Run(Cloud Run Jobs)(デプロイ先)
   - Cloud Run Jobsとか、Cloud RunのAlways on CPUとか記事にまとめたい
 - ngrok(ローカル開発環境)
+  - 参考：https://www.engilaboo.com/ngrok-docker/
 - Glitch(デプロイ先)
   - ngrokと同じようなもの？
     - サクッと記事にまとめたい

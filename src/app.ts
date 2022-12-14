@@ -7,12 +7,14 @@ const app = new App({
 
 // Listens to incoming messages that contain "hello"
 app.message("hello", async ({say}) => {
+  console.log("helloに来たよ！！");
   // say() sends a message to the channel where the event was triggered
   await say("Hello!");
 });
 
 (async () => {
   // Start your app
+  // Slack Boltはport 3000で起動
   await app.start(process.env.PORT || 3000);
 
   console.log("⚡️ Bolt app is running!");
