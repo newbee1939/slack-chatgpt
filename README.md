@@ -99,7 +99,7 @@
   - https://api.slack.com/apps/A04EM70BXQD/event-subscriptions?
 
 # TODO
-- とりあえずGlitchを連携させて、Slackでメッセージを送ったときに返答するようにしたい（いまここ！）
+- とりあえずGlitchを連携させて、Slackでメッセージを送ったときにシンプルなメッセージを返答するようにしたい（いまここ！）
 - ローカルでngrokで開発できるようにする
 - GPT-3を組み込んでみる
 - 会社に導入を提案してみたい
