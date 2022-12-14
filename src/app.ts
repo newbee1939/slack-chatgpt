@@ -5,7 +5,13 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
+// これで良さそう
+app.event("app_mention", async({say}) => {
+  await say("メンションされたので返信!");
+});
+
 // Listens to incoming messages that contain "hello"
+// @slac-testへのメンションがあったときだけ動くようにする
 app.message("hello", async ({say}) => {
   console.log("helloに来たよ！！");
   // say() sends a message to the channel where the event was triggered
