@@ -12,6 +12,7 @@ app.event("app_mention", async({say}) => {
   });
   const openai = new OpenAIApi(configuration);
 
+  // TODO:slackで入力した文字を渡す
   const response = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: "Node.jsとDenoの違いを教えてください",
@@ -24,6 +25,8 @@ app.event("app_mention", async({say}) => {
     await say("ごめんなさい。。わからにゃい。。。")
     return;
   }
+  // TODO:なぜか二回動いてしまうので解消する！
+  // TODO:です、とかますとかを「にゃ」に変更する。猫の絵文字も付ける
   await say(responseText);
 });
 
