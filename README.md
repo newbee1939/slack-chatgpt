@@ -113,6 +113,16 @@
 - Event Subscriptionsの設定
   - https://api.slack.com/apps/A04EM70BXQD/event-subscriptions?
 
+# APIの形式
+<!-- Request -->
+curl https://api.openai.com/v1/completions \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer OPENAI_API_KEY" \
+-d '{"model": "text-davinci-003", "prompt": "プログラミングとはなんですか？", "temperature": 0, "max_tokens": 100}' -k  
+
+<!-- Response -->
+{"id":"hoge","object":"text_completion","created":1671111296,"model":"text-davinci-003","choices":[{"text":"\n\nプログラミングとは、コンピューターに特定の処理を行わせるために、特定の言語を使って書かれたプログラムを作成することを指します。プログラミング言語は、コン","index":0,"logprobs":null,"finish_reason":"length"}],"usage":{"prompt_tokens":17,"completion_tokens":100,"total_tokens":117}}
+
 # TODO
 - とりあえずGlitchを連携させて、Slackでメッセージを送ったときにシンプルなメッセージを返答するようにしたい（いまここ！）
 - GPT-3を組み込んでみる
