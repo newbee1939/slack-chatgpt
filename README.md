@@ -95,6 +95,8 @@
   - 最新のものを取り込む
 - Jest
   - テストもちゃんと書きたい
+- Denoを試してみてもいいかも
+  - https://zenn.dev/steelydylan/scraps/a3d8527e151a80
 - その他
 
 # その他
