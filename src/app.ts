@@ -6,15 +6,16 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
-app.event("app_mention", async({message, say}) => {
+// TODO: messageを受け取るようにする
+app.event("app_mention", async({say}) => {
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
-
+  
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: message,
+    prompt: "プログラミングの上達方法を教えてください",
     temperature: 0,
     max_tokens: 500,
   });
