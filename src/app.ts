@@ -6,6 +6,7 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
+// いてる？二回動
 app.event("app_mention", async({say}) => {
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -42,7 +43,9 @@ app.event("app_mention", async({say}) => {
 
   await say("メンションされたので返信!!");
   const responseText = response.data.choices[0].text;
+  console.log(responseText);
   if (responseText === undefined) {
+    // undefinedが入ってそう。。
     return;
   }
   await say(responseText);
