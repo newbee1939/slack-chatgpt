@@ -34,6 +34,8 @@
     - https://beta.openai.com/docs/api-reference/introduction
 
 # 学びメモ
+- ngrok起動
+  - ngrok http 3000
 - curl: (60) Issuer certificate is invalid.の対処法
   - https://qiita.com/ponsuke0531/items/224e4cba2a8c8def5987
 - ngrokのインストールと起動
