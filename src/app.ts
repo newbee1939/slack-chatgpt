@@ -6,16 +6,15 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
 
-app.event("app_mention", async({say}) => {
+app.event("app_mention", async({message, say}) => {
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
 
-  // TODO:slackで入力した文字を渡す
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: "Node.jsとDenoの違いを教えてください",
+    prompt: message,
     temperature: 0,
     max_tokens: 500,
   });

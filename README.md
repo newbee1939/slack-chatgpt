@@ -132,3 +132,4 @@ curl https://api.openai.com/v1/completions \
 - 全ての工程を自動化する
   - できればngrokもDockerにしたい
 - 色々触ってみて理解を深める
+- 自動でapp.jsに変換されるようにしたい
