@@ -99,6 +99,7 @@
   - テストもちゃんと書きたい
 - Denoを試してみてもいいかも
   - https://zenn.dev/steelydylan/scraps/a3d8527e151a80
+- GCP Cloud Functionsにもデプロイしてみる
 - その他
 
 # その他
