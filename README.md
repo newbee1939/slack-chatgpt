@@ -78,6 +78,12 @@
   - promptとかの設定方法はこちらを見たら分かる
     - https://github.com/openai/openai-node
 
+# デプロイ
+- 一番参考になった記事
+  - https://qiita.com/ryurock/items/b54d6fa40fb5e7f486ee
+- Build a Slack Bot with Node.js on Cloud Run
+  - https://codelabs.developers.google.com/codelabs/cloud-slack-bot?hl=ja#0
+
 # 使用技術(個人開発の際は、一つは使ったことない技術を組み込む)(それぞれのデプロイ方法を記事にまとめる)
 - Slack Bolt(フレームワーク)
   - 初めて使う技術
