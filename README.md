@@ -34,6 +34,12 @@
     - https://beta.openai.com/docs/api-reference/introduction
 
 # 学びメモ
+- Cloud Run Always on CPUについて
+  - https://cloud.google.com/run/docs/configuring/cpu-allocation?hl=ja
+  - https://medium.com/google-cloud-jp/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%83%AC%E3%82%B9-%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A-cloud-run-%E3%81%AB%E6%96%B0%E6%A9%9F%E8%83%BD-always-on-cpu-%E3%81%8C%E7%99%BB%E5%A0%B4%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F-c88cd1114c60
+    - 今回はRequestが散発なので、リクエストの処理中にのみ CPU を割り当てるで良さそう？
+  - https://www.m3tech.blog/entry/2022/04/15/180000
+    - いや、Always on CPUじゃないとダメっぽい
 - ngrok起動
   - ngrok http 3000
 - curl: (60) Issuer certificate is invalid.の対処法
@@ -74,12 +80,15 @@
 
 # 使用技術(個人開発の際は、一つは使ったことない技術を組み込む)(それぞれのデプロイ方法を記事にまとめる)
 - Slack Bolt(フレームワーク)
+  - 初めて使う技術
 - Node.js
 - TypeScript
 - JavaScript
 - Cloud Run(Always on CPU)
+  - Always on CPUは初めて使う設定
 - ngrok
   - 参考：https://www.engilaboo.com/ngrok-docker/
+  - Dockerじゃないngrokは初めて使った
 - GitHub Actionsで自動デプロイ出来るようにする
   - 最新のものを取り込む
 - Jest
