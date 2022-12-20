@@ -77,30 +77,13 @@
 - Node.js
 - TypeScript
 - JavaScript
-- Docker(ngrokを使ったローカル開発環境)
-- Cloud Run(Cloud Run Jobs)(デプロイ先)
-  - Cloud Run Jobsとか、Cloud RunのAlways on CPUとか記事にまとめたい
-- ngrok(ローカル開発環境)
+- Cloud Run(Always on CPU)
+- ngrok
   - 参考：https://www.engilaboo.com/ngrok-docker/
-- Glitch(デプロイ先)
-  - ngrokと同じようなもの？
-    - サクッと記事にまとめたい
-  - なぜかうまくいかないので一旦スキップ。。（リポジトリimportのところが動かない。。） 
-  - https://glitch.com/dashboard
-- Vercel(デプロイ先)
-- AWS Lambda
-  - https://slack.dev/bolt-js/ja-jp/deployments/aws-lambda
-  - 本にある？
-- Heroku
-  - https://slack.dev/bolt-js/ja-jp/deployments/heroku
-- GitHub Actionsでそれぞれの環境に自動デプロイ出来るようにする
+- GitHub Actionsで自動デプロイ出来るようにする
   - 最新のものを取り込む
 - Jest
   - テストもちゃんと書きたい
-- Denoを試してみてもいいかも
-  - https://zenn.dev/steelydylan/scraps/a3d8527e151a80
-- GCP Cloud Functionsにもデプロイしてみる
-- その他
 
 # その他
 - サンプルテスト用Slcakチャンネル
