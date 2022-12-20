@@ -34,6 +34,8 @@
     - https://beta.openai.com/docs/api-reference/introduction
 
 # 学びメモ
+- 必ず完全に理解して使う
+- Node.jsとは？仕組みも
 - Cloud Run Always on CPUについて
   - https://cloud.google.com/run/docs/configuring/cpu-allocation?hl=ja
   - https://medium.com/google-cloud-jp/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%83%AC%E3%82%B9-%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A-cloud-run-%E3%81%AB%E6%96%B0%E6%A9%9F%E8%83%BD-always-on-cpu-%E3%81%8C%E7%99%BB%E5%A0%B4%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F-c88cd1114c60
