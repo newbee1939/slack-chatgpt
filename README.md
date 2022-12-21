@@ -90,7 +90,9 @@ Slackワークスペースからのメッセージをlistenして、対応する
   - Dockerじゃないngrokは初めて使う
 - Cloud Deploy
   - 初めて使う技術
-  - 参考:https://medium.com/google-cloud-jp/cloud-deploy-397c8a7c68c0
+  - 参考1:https://medium.com/google-cloud-jp/cloud-deploy-397c8a7c68c0
+  - 参考2:https://www.youtube.com/watch?v=Il8FlhR9jKM
+  - 参考3:https://cloud.google.com/deploy?hl=ja
 
 ## OpenAI APIのRequest・Response形式
 <!-- Request -->
