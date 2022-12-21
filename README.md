@@ -95,6 +95,7 @@ Slackワークスペースからのメッセージをlistenして、対応する
   - 参考1:https://medium.com/google-cloud-jp/cloud-deploy-397c8a7c68c0
   - 参考2:https://www.youtube.com/watch?v=Il8FlhR9jKM
   - 参考3:https://cloud.google.com/deploy?hl=ja
+  - 参考4:Google Cloud Deploy を使用してアプリを Cloud Run にデプロイする(https://cloud.google.com/deploy/docs/deploy-app-run?hl=ja)
 
 ## OpenAI APIのRequest・Response形式
 <!-- Request -->
