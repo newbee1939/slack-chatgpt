@@ -1,122 +1,98 @@
 # slack-chatgpt
-実際に作りながら、
-0. [x] Slack BotをBoltで開発した
-  - https://zenn.dev/peg/articles/a3597550a61006
-1. [x] Bolt の概要（ドキュメント）
-  - https://slack.dev/java-slack-sdk/guides/ja/bolt-basics
-2. [] Boltを使ったSlack BotをTypescriptで開発する方法（基本的にはこれを参考にするで良さそう）
-  - https://qiita.com/winuim/items/5db662622bbc84ecf92a
-3. [] Slack API入門 -Boltを使ってSlack アプリを開発する
-  - https://tech-blog.rakus.co.jp/entry/20210514/api
-4. [] Bolt フレームワークを使って Slack Bot を作ろう
-  - https://api.slack.com/lang/ja-jp/hello-world-bolt
-5. [] GCP CloudRunにSlack Bolt(TypeScriptで)を導入してSlackBotを作成する
-  - https://zenn.dev/ryurock/articles/qiita-20200727-b54d6fa40fb5e7f486ee
-6. [] OpenAIの言語モデル、GPT-3を社内Slackに導入したら捗りすぎてやばい
-  - https://zenn.dev/nickel/articles/9c5b8cd56e76c0
-  - AIに前提知識を伝える、 prompt プロパティが重要です。この prompt で、うまく値を設定することで、弊社のおぷたんは対話形式で質問することも可能にしています
-7. [] ChatGPTに「ChatGPTに質問出来るslack botのtypescriptのコードを書いて下さい」とリクエストしてみた件
-  - https://note.com/yoshihiko_k/n/na3181e9d1581
-8. [] ChatGPTに以下の質問
-  - 「BoltとTypeScriptを使って、ChatGPTの回答結果を返すSlack Botを作る方法を教えてください」
-9. [] Bolt for JavaScrip
-  - https://github.com/slackapi/bolt-js
-10. [x] Slackアプリをまずは作る必要がある
-  - https://slack.dev/bolt-js/ja-jp/tutorial/getting-started
-11. Bolt フレームワークを使って Slack Bot を作ろう(公式のチュートリアル)
-  - https://api.slack.com/lang/ja-jp/hello-world-bolt
-  - イベントの設定方法はこちらにある
-12. GPT-3 APIの利用申請から承認まで
-  - https://qiita.com/nissan_lab/items/8d0a887b6d32881d6d80
-13. OpenAIの公式ドキュメント
-  - https://beta.openai.com/docs/introduction/overview
-  - この辺でリクエストの作り方学べそう
-    - https://beta.openai.com/docs/api-reference/introduction
+Slackワークスペースからのメッセージをlistenして、対応するOpenAI GPT-3からの回答を応答するアプリ
 
-# 学びメモ
-- 必ず完全に理解して使う
-- Node.jsとは？仕組みも
-- Cloud Run Always on CPUについて
-  - https://cloud.google.com/run/docs/configuring/cpu-allocation?hl=ja
-  - https://medium.com/google-cloud-jp/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%83%AC%E3%82%B9-%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A-cloud-run-%E3%81%AB%E6%96%B0%E6%A9%9F%E8%83%BD-always-on-cpu-%E3%81%8C%E7%99%BB%E5%A0%B4%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F-c88cd1114c60
-    - 今回はRequestが散発なので、リクエストの処理中にのみ CPU を割り当てるで良さそう？
-  - https://www.m3tech.blog/entry/2022/04/15/180000
-    - いや、Always on CPUじゃないとダメっぽい
-- ngrok起動
+## ローカル開発の手順
+1. Slackアプリの作成 
+  - https://api.slack.com/apps
+    - Create New App から
+2. Basic InformationのSigning Secret(重要な認証情報)を控えておく
+  - https://api.slack.com/apps/A04EM70BXQD
+3. OAuth & Permissionsのボットトークン(xoxb-)を控えておく
+  - https://api.slack.com/apps/A04EM70BXQD/oauth?
+    - Slack アプリは、OAuth を使用して、Slack の API へのアクセスを管理する
+    - トークンを使って、アプリは API メソッドを呼び出すことができる
+4. Add an OAuth Scopeで許可する処理を指定する
+  - https://api.slack.com/apps/A04EM70BXQD/oauth?
+  - 以下を追加する(必要になったら追加する)
+    - app_mentions:read
+    - chat:write
+5. 以下のページからOpenAIのキーを取得して控えておく
+  - https://beta.openai.com/account/api-keys
+6. アプリ用のディレクトリ作成
+  - mkdir slack-chatgpt
+  - cd slack-chatgpt 
+7. npm init
+  - 新しいプロジェクトを初期化
+  - package.jsonの作成
+8. .envに以下の値を追加する
+  - SLACK_SIGNING_SECRET=
+  - SLACK_BOT_TOKEN=
+  - OPENAI_API_KEY=
+9. 必要なパッケージをインストールする
+  - npm install @slack/bolt
+  - npm install openai 
+10. 細かい設定の追加
+  - package.jsonのscripts
+  - tsconfig.json
+    - など
+11. app.tsにSlack Botの処理を追加
+  - 今回だと、GPT-3のAPIを叩いて結果を取得する
+12. Buildしてアプリを立ち上げる
+  - npm run start
+12. ngrokをインストールしてローカル確認ができるように
+  - 手順:https://ngrok.com/download
+13. ngrokをlistenする
   - ngrok http 3000
-- curl: (60) Issuer certificate is invalid.の対処法
-  - https://qiita.com/ponsuke0531/items/224e4cba2a8c8def5987
-- ngrokのインストールと起動
-  - dockerのngrokだと内部の通信しかできない？？わからんけど
-  - 普通にMacにインストール 
-    - 手順:https://ngrok.com/download
-    - ngrok configの設定:https://dashboard.ngrok.com/get-started/setup
-- イベント発生時に、Slackサーバーからペイロードを受け取るには、イベントのサブスクリプションの設定が必要 
-  - Slack ワークスペースで発生するイベント (メッセージが投稿されたときや、メッセージに対するリアクションが投稿されたときなど) をリッスンするには、Events API を使用してイベントタイプに登録します。
-- Glitchでnode.jsのバージョンを変更する方法
-  - https://help.glitch.com/kb/article/59-can-i-change-the-version-of-node-js-my-project-uses/  
-- GlitchのURL（エンドポイント）をSlackに設定
-  - https://techblog.cartaholdings.co.jp/entry/archives/3864
-- GlitchでGitHubからコードをimportする
-  - https://help-glitch-com.translate.goog/kb/article/20-importing-code-from-github/?_x_tr_sl=en&_x_tr_tl=ja&_x_tr_hl=ja&_x_tr_pto=sc
-- OpenAI APIの始め方
-  - npm install openai
-  - 以下のページからAPIキーを取得
-    - https://beta.openai.com/account/api-keys
-  - 全てのHTTPリクエストのHEADに以下のようにキーを含ませる必要がある
-    - Authorization: Bearer YOUR_API_KEY
-  - リクエストの例
-    - curlの場合
-      - curl https://api.openai.com/v1/models -H 'Authorization: Bearer YOUR_API_KEY'
-    - Node.jsの場合
-      - `import { Configuration, OpenAIApi } from "openai";
-        const configuration = new Configuration({
-            apiKey: process.env.OPENAI_API_KEY,
-        });
-        const openai = new OpenAIApi(configuration);
-        const response = await openai.listEngines();`
-  - 細かいリクエストの作り方はこちらに
-    - https://beta.openai.com/docs/api-reference/making-requests
-  - promptとかの設定方法はこちらを見たら分かる
-    - https://github.com/openai/openai-node
+13. Slack Appのイベントの設定
+  - 参考:https://slack.dev/bolt-js/ja-jp/tutorial/getting-started-http
+  - Event SubscriptionのEnable Events のスイッチをオンにする
+  - Request URLにngrokのURLを追加する
+    - 最後に /slack/events を付ける
+14. これでローカルで開発・検証ができるようになるはず
+  - Slackからメッセージを送れば返すようになる
 
-# デプロイ
-- 一番参考になった記事
-  - https://qiita.com/ryurock/items/b54d6fa40fb5e7f486ee
-- Build a Slack Bot with Node.js on Cloud Run
-  - https://codelabs.developers.google.com/codelabs/cloud-slack-bot?hl=ja#0
+## Cloud Runにデプロイする手順
+### 手動デプロイ
+1. gcloudコマンドが使えるようにしておく
+  - Dockerの構成等も必要
+2. Dockerfile作成
+3. アプリimageのbuildとpush
+  - gcloud builds submit --project sample-328713 --tag gcr.io/sample-328713/test
+4. Cloud Runへのデプロイ
+  - gcloud beta run deploy --image gcr.io/sample-328713/test3 --platform managed
+5. Request URLにCloud RunのURLを設定する 
+  - 最後に /slack/events を付ける
+6. これで本番環境で検証ができるようになるはず
+  - Slackからメッセージを送れば返すようになる 
 
-# 使用技術(個人開発の際は、一つは使ったことない技術を組み込む)(それぞれのデプロイ方法を記事にまとめる)
+### Cloud Deployを使った自動デプロイ
+1. hoge
+
+## 関連記事・URL
+- テスト用Slackチャンネル
+  - https://app.slack.com/client/T04E9JJ0VC7/C04EHGW7C14
+- Bolt 入門ガイド (HTTP)
+  - https://slack.dev/bolt-js/ja-jp/tutorial/getting-started-http
+- OpenAIのリファレンス
+  - https://beta.openai.com/docs/api-reference/making-requests
+- Bolt フレームワークを使って Slack Bot を作ろう
+  - https://api.slack.com/lang/ja-jp/hello-world-bolt
+
+## 使用技術
 - Slack Bolt(フレームワーク)
   - 初めて使う技術
 - Node.js
 - TypeScript
 - JavaScript
-- Cloud Run(Always on CPU)
+- Cloud Run(Always on CPU?)
   - Always on CPUは初めて使う設定
 - ngrok
-  - 参考：https://www.engilaboo.com/ngrok-docker/
-  - Dockerじゃないngrokは初めて使った
-- GitHub Actionsで自動デプロイ出来るようにする
-  - 最新のものを取り込む
-- Jest
-  - テストもちゃんと書きたい
+  - Dockerじゃないngrokは初めて使う
+- Cloud Deploy
+  - 初めて使う技術
+  - 参考:https://medium.com/google-cloud-jp/cloud-deploy-397c8a7c68c0
 
-# その他
-- サンプルテスト用Slcakチャンネル
-  - https://app.slack.com/client/T04E9JJ0VC7/C04EHGWSKQW
-- サンプル用Slack App
-  - https://api.slack.com/apps/A04EM70BXQD
-  - xoxbから始まるトークンとかはこれ
-    - https://api.slack.com/apps/A04EM70BXQD/oauth?success=1
-- Tokenがきちんと使えるのか確認する方法
-  - https://zenn.dev/apo_zenn/articles/855ab0a46eb815
-- 対象のGitリポジトリのURL
-  - https://github.com/newbee1939/slack-chatgpt.git
-- Event Subscriptionsの設定
-  - https://api.slack.com/apps/A04EM70BXQD/event-subscriptions?
-
-# APIの形式
+## OpenAI APIのRequest・Response形式
 <!-- Request -->
 curl https://api.openai.com/v1/completions \
 -H "Content-Type: application/json" \
@@ -126,13 +102,13 @@ curl https://api.openai.com/v1/completions \
 <!-- Response -->
 {"id":"hoge","object":"text_completion","created":1671111296,"model":"text-davinci-003","choices":[{"text":"\n\nプログラミングとは、コンピューターに特定の処理を行わせるために、特定の言語を使って書かれたプログラムを作成することを指します。プログラミング言語は、コン","index":0,"logprobs":null,"finish_reason":"length"}],"usage":{"prompt_tokens":17,"completion_tokens":100,"total_tokens":117}}
 
-# TODO
-- とりあえずGlitchを連携させて、Slackでメッセージを送ったときにシンプルなメッセージを返答するようにしたい（いまここ！）
-- GPT-3を組み込んでみる
-- 会社に導入を提案してみたい
-  - 社員の生産性はかなり上がりそう
-  - 使わない理由がない
-- 全ての工程を自動化する
-  - できればngrokもDockerにしたい
-- 色々触ってみて理解を深める
-- 自動でapp.jsに変換されるようにしたい
+## TODO
+1. Cloud DeployでCloud Runにデプロイできるようにする
+2. コード内のTODOを解消する
+3. よりコードを洗練させる
+  - OpenAIのpromptの設定とか？
+4. .envをDockerfile上で生成できるようにしたい
+  - 現状は一時的に.envの.gitignoreを外してデプロイ
+5. 学んだことを分解していくつかのブログ記事にまとめる
+  - 曖昧な部分を残さない
+  - 全て腹落ちして完全に理解する

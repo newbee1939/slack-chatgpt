@@ -7,6 +7,7 @@ const app = new App({
 });
 
 // TODO: messageを受け取るようにする
+// TODO: 文字数はどうする？制限無くした方が良さそう
 app.event("app_mention", async({say}) => {
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
@@ -32,7 +33,7 @@ app.event("app_mention", async({say}) => {
 
 (async () => {
   // Start your app
-  await app.start(process.env.PORT || 3000);
+  await app.start(process.env.PORT || 8080);
 
   console.log("⚡️ Bolt app is running!");
 })();
