@@ -77,6 +77,8 @@ Slackワークスペースからのメッセージをlistenして、対応する
   - https://beta.openai.com/docs/api-reference/making-requests
 - Bolt フレームワークを使って Slack Bot を作ろう
   - https://api.slack.com/lang/ja-jp/hello-world-bolt
+- Cloud Deploy ドキュメント
+  - https://cloud.google.com/deploy/docs?hl=ja
 
 ## 使用技術
 - Slack Bolt(フレームワーク)
