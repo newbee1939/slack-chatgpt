@@ -103,12 +103,16 @@ curl https://api.openai.com/v1/completions \
 {"id":"hoge","object":"text_completion","created":1671111296,"model":"text-davinci-003","choices":[{"text":"\n\nプログラミングとは、コンピューターに特定の処理を行わせるために、特定の言語を使って書かれたプログラムを作成することを指します。プログラミング言語は、コン","index":0,"logprobs":null,"finish_reason":"length"}],"usage":{"prompt_tokens":17,"completion_tokens":100,"total_tokens":117}}
 
 ## TODO
-1. Cloud DeployでCloud Runにデプロイできるようにする
+1. Cloud DeployでCloud Runに自動デプロイできるようにする
+  - コードをmainにマージしたときに
 2. コード内のTODOを解消する
 3. よりコードを洗練させる
-  - OpenAIのpromptの設定とか？
+  - OpenAIのpromptの設定とか
+  - リファクタリング
+  - 細かいところ
 4. .envをDockerfile上で生成できるようにしたい
-  - 現状は一時的に.envの.gitignoreを外してデプロイ
+  - 現状は一時的に.envの.gitignoreを外してデプロイしている
 5. 学んだことを分解していくつかのブログ記事にまとめる
   - 曖昧な部分を残さない
   - 全て腹落ちして完全に理解する
+6. 会社のSlackに導入する
