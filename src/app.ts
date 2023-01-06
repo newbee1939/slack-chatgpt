@@ -19,7 +19,7 @@ app.event("app_mention", async ({ event, say }) => {
     max_tokens: 3000,
   });
 
-  const responseText = response.data.choices[0].text?.replace(/.*\n?/g, "");
+  const responseText = response.data.choices[0].text;
 
   if (responseText === undefined) {
     await say("ごめんなさい。。わからにゃい。。。");
