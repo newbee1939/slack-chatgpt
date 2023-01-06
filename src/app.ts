@@ -6,7 +6,7 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
-// TODO: messageを受け取るようにする
+// TODO: メンションが付いたときのmessageを受け取るようにする
 // TODO: 文字数はどうする？制限無くした方が良さそう
 app.event("app_mention", async ({ say }) => {
   const configuration = new Configuration({
