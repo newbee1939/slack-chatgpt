@@ -19,13 +19,14 @@ app.event("app_mention", async ({ event, say }) => {
     max_tokens: 3000,
   });
 
-  const responseText = response.data.choices[0].text;
+  const responseText = response.data.choices[0].text?.replace(/.*\n?/g, "");
+
   if (responseText === undefined) {
     await say("ごめんなさい。。わからにゃい。。。");
     return;
   }
-  // TODO:なぜか二回動いてしまうので解消する！（これ：https://dev.classmethod.jp/articles/slack-resend-matome/）
-  await say(responseText);
+  // TODO:なぜか二回動いてしまうので解消する！（これ:https://dev.classmethod.jp/articles/slack-resend-matome/）
+  await say("```" + responseText + "```");
 });
 
 (async () => {
