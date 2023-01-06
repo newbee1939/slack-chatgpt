@@ -25,7 +25,7 @@ app.event("app_mention", async ({ event, say }) => {
     await say("ごめんなさい。。わからにゃい。。。");
     return;
   }
-  // TODO:なぜか二回動いてしまうので解消する！（これ:https://dev.classmethod.jp/articles/slack-resend-matome/）
+
   await say(responseText);
 });
 
