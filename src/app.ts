@@ -6,9 +6,7 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
-// TODO: メンションが付いたときのmessageを受け取るようにする
-// TODO: 文字数はどうする？制限無くした方が良さそう
-app.event("app_mention", async ({ say }) => {
+app.event("app_mention", async ({ event, say }) => {
   const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
   });
@@ -16,9 +14,9 @@ app.event("app_mention", async ({ say }) => {
 
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: "プログラミングの上達方法を教えてください",
+    prompt: event.text.replace(/<@.*>/g, "").trim(),
     temperature: 0,
-    max_tokens: 500,
+    max_tokens: 3000,
   });
 
   const responseText = response.data.choices[0].text;
@@ -27,13 +25,11 @@ app.event("app_mention", async ({ say }) => {
     return;
   }
   // TODO:なぜか二回動いてしまうので解消する！（これ：https://dev.classmethod.jp/articles/slack-resend-matome/）
-  // TODO:です、とかますとかを「にゃ」に変更する。猫の絵文字も付ける
   await say(responseText);
 });
 
 (async () => {
-  // Start your app
   await app.start(process.env.PORT || 8080);
 
-  console.log("⚡️ Bolt app is running!");
+  console.log("⚡️ Slack Bolt app is running!");
 })();
