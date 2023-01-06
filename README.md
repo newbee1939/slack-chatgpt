@@ -71,14 +71,18 @@ Slack ワークスペースからのメッセージを listen して、対応す
 
 13. ngrok を listen する
 
-- ngrok http 3000
+- ngrok http 8080
+  - PORT はアプリの PORT に合わせる
 
 13. Slack App のイベントの設定
 
+- 設定ページ
+  - https://api.slack.com/apps/A04EM70BXQD/event-subscriptions?
 - 参考:https://slack.dev/bolt-js/ja-jp/tutorial/getting-started-http
 - Event Subscription の Enable Events のスイッチをオンにする
-- Request URL に ngrok の URL を追加する
+- RequestURL に ngrok の URL（Forwarding の所の URL）を追加する
   - 最後に /slack/events を付ける
+    - ex. https://112e-2001-318-2103-434-ac3d-882a-1a89-8e7c.jp.ngrok.io/slack/events
 
 14. これでローカルで開発・検証ができるようになるはず
 
