@@ -12,21 +12,26 @@ app.event("app_mention", async ({ event, say }) => {
   });
   const openai = new OpenAIApi(configuration);
 
-  const response = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: event.text.replace(/<@.*>/g, "").trim(),
-    temperature: 0.9, // 創造的なアプリケーションには0.9を、明確に定義された答えがあるアプリケーションには0を
-    max_tokens: 4096, // 返ってくるレスポンストークンの最大数。promptと合わせた数字
-  });
+  try {
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: event.text.replace(/<@.*>/g, "").trim(),
+      temperature: 0.9, // 創造的なアプリケーションには0.9を、明確に定義された答えがあるアプリケーションには0を
+      max_tokens: 4096, // 返ってくるレスポンストークンの最大数。promptと合わせた数字
+    });
 
-  const responseText = response.data.choices[0].text;
+    const { text } = response.data.choices[0];
 
-  if (responseText === undefined) {
-    await say("ごめんなさい。。わからにゃい。。。");
-    return;
+    if (text === undefined) {
+      await say("ごめんなさい。。わからにゃい。。。");
+      return;
+    }
+
+    await say(text);
+  } catch (e) {
+    console.error(e);
+    await say("すみません。エラーです。。");
   }
-
-  await say(responseText);
 });
 
 (async () => {
