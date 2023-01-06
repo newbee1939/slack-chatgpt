@@ -159,28 +159,28 @@ curl https://api.openai.com/v1/completions \
 
 ## TODO
 
-1. コード内の TODO を解消する
-2. よりコードを洗練させる
+1. [] コード内の TODO を解消する
+2. [] よりコードを洗練させる
 
 - OpenAI の prompt の設定とか
 - リファクタリング
 - 細かいところ
 
-3. Cloud Deploy で Cloud Run に自動デプロイできるようにする
+3. [] Cloud Deploy で Cloud Run に自動デプロイできるようにする
 
 - コードを main にマージしたときに
 
-4. .env を Dockerfile 上で生成できるようにしたい
+4. [] .env を Dockerfile 上で生成できるようにしたい
 
 - 現状は一時的に.env の.gitignore を外してデプロイしている
 
-5. SlackBot の応答速度を上げる
+5. [] SlackBot の応答速度を上げる
 
 - Slack に書き込んでからメッセージが返ってくるまでを最速に
 
-6. 学んだことを分解していくつかのブログ記事にまとめる
+6. [] 学んだことを分解していくつかのブログ記事にまとめる
 
 - 曖昧な部分を残さない
 - 全て腹落ちして完全に理解する
 
-7. 会社の Slack に導入する
+7. [] 会社の Slack に導入する
