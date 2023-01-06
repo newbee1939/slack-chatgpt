@@ -100,6 +100,7 @@ Slack ワークスペースからのメッセージを listen して、対応す
 3. アプリ image の build と push
 
 - gcloud builds submit --project sample-328713 --tag gcr.io/sample-328713/test
+- 一時的に.gitignore から.env を外しておく
 
 4. Cloud Run へのデプロイ
 
