@@ -163,7 +163,7 @@ curl https://api.openai.com/v1/completions \
 
 ## TODO
 
-1. [] コード内の TODO を解消する
+1. [x] コード内の TODO を解消する
 2. [] よりコードを洗練させる
 
 - OpenAI の prompt の設定とか
