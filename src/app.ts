@@ -17,7 +17,7 @@ app.event("app_mention", async ({ event, say }) => {
       model: "text-davinci-003",
       prompt: event.text.replace(/<@.*>/g, "").trim(),
       temperature: 0.9, // 創造的なアプリケーションには0.9を、明確に定義された答えがあるアプリケーションには0を
-      max_tokens: 4096, // 返ってくるレスポンストークンの最大数。promptと合わせた数字
+      max_tokens: 3000, // 返ってくるレスポンストークンの最大数。promptと合わせた数字
     });
 
     const { text } = response.data.choices[0];
