@@ -216,6 +216,7 @@ curl https://api.openai.com/v1/completions \
 3. [] Cloud Deploy で Cloud Run に自動デプロイできるようにする
 
 - コードを main にマージしたときに
+- デプロイした Cloud Run でアプリが正常に動作すればゴール
 
 4. [] .env を Dockerfile 上で生成できるようにしたい
 
