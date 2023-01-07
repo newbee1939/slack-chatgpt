@@ -116,6 +116,7 @@ Slack ワークスペースからのメッセージを listen して、対応す
 
 ### Cloud Deploy を使った自動デプロイ
 
+0. 参考記事:https://cloud.google.com/deploy/docs/deploy-app-run?hl=ja
 1. hoge
 
 ## 関連記事・URL
@@ -130,6 +131,8 @@ Slack ワークスペースからのメッセージを listen して、対応す
   - https://api.slack.com/lang/ja-jp/hello-world-bolt
 - Cloud Deploy ドキュメント
   - https://cloud.google.com/deploy/docs?hl=ja
+- Cloud Deploy の概要
+  - https://cloud.google.com/deploy?hl=ja
 
 ## 使用技術
 
