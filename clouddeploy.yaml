@@ -1,0 +1,17 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: my-run-demo-app-1
+description: main application pipeline
+serialPipeline:
+  stages:
+    - targetId: run-qsprod
+      profiles: [prod]
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: run-qsprod
+description: Cloud Run production service
+run:
+  location: projects/sample-328713/locations/us-central1

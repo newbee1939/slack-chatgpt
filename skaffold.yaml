@@ -1,0 +1,11 @@
+apiVersion: skaffold/v3alpha1
+kind: Config
+metadata:
+  name: deploy-slack-chatgpt
+profiles:
+  - name: prod
+    manifests:
+      rawYaml:
+        - run-prod.yaml
+deploy:
+  cloudrun: {}

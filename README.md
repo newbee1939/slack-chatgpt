@@ -117,7 +117,46 @@ Slack ワークスペースからのメッセージを listen して、対応す
 ### Cloud Deploy を使った自動デプロイ
 
 0. 参考記事:https://cloud.google.com/deploy/docs/deploy-app-run?hl=ja
-1. hoge
+1. Skaffold 構成を作成（https://cloud.google.com/skaffold?hl=ja）
+
+- Google Cloud Deploy では、Skaffold を使用して、デプロイする対象と個々のターゲットに適切にデプロイする方法の詳細を提供します
+- skaffold.yaml ファイルを作成して、サンプルアプリのデプロイに使用する Kubernetes マニフェストを識別
+
+2. Cloud Run サービス用のサービス定義ファイルを作成
+
+- サービスを定義し、デプロイする（ビルド済みの）コンテナ イメージを指定
+
+3. Google Cloud Deploy デリバリー パイプラインとデプロイ ターゲットを定義
+
+- パイプラインとターゲットは、1 つのファイルまたは個別のファイルで定義できます。このクイックスタートでは、ファイルを 1 つ作成します
+- gcloud deploy apply --file=clouddeploy.yaml --region=us-central1 --project=sample-328713
+  - これで、ターゲットを使用してパイプラインを最初のターゲットにデプロイする準備が整いました
+
+4. 最初のターゲットに自動的にデプロイするリリースを作成して、デリバリー パイプラインをインスタンス化します
+
+- リリースは、デプロイされる変更を表す中央の Google Cloud Deploy リソースです。デリバリー パイプラインは、そのリリースのライフサイクルを定義します
+- デプロイするコンテナ イメージを表す release リソースを作成
+
+  - gcloud deploy releases create test-release-002 \
+    --project=sample-328713 \
+    --region=us-central1 \
+    --delivery-pipeline=my-run-demo-app-1 \
+    --images=my-app-image=gcr.io/cloudrun/hello
+
+5. クリーンアップ
+
+- deploy-qs-dev Cloud Run サービスを削除
+
+  - gcloud run services delete deploy-qs-prod --region=us-central1 --project=sample-328713
+
+- リリースとロールアウトを含む、デリバリー パイプラインを削除
+
+  - gcloud deploy delivery-pipelines delete my-run-demo-app-1 --force --region=us-central1 --project=sample-328713
+
+- Cloud Storage の中のオブジェクトも削除する
+
+- デリバリーパイプラインのページ
+  - https://console.cloud.google.com/deploy/delivery-pipelines?hl=ja&_ga=2.99582878.168409258.1673069602-660558282.1668514800&project=sample-328713
 
 ## 関連記事・URL
 
