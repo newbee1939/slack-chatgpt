@@ -2,10 +2,18 @@ apiVersion: skaffold/v3alpha1
 kind: Config
 metadata:
   name: deploy-slack-chatgpt
+build:
+  local:
+    push: true #GCRにbuildしたimageをpushする
+  artifacts:
+    - image: gcr.io/sample-328713/slack-chatgpt
+      context: .
+      docker:
+        dockerfile: Dockerfile
 profiles:
   - name: prod
     manifests:
       rawYaml:
-        - run-prod.yaml
+        - run-prod.yaml #Cloud Runサービス定義の名前を指定。任意の数の成果物を"リリース"としてまとめる
 deploy:
   cloudrun: {}

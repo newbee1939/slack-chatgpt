@@ -141,7 +141,7 @@ Slack ワークスペースからのメッセージを listen して、対応す
     --project=sample-328713 \
     --region=us-central1 \
     --delivery-pipeline=my-run-demo-app-1 \
-    --images=my-app-image=gcr.io/cloudrun/hello
+    --images=my-app-image=gcr.io/cloudrun/hello #ここにデプロイしたイメージを指定
 
 5. クリーンアップ
 
@@ -156,7 +156,14 @@ Slack ワークスペースからのメッセージを listen して、対応す
 - Cloud Storage の中のオブジェクトも削除する
 
 - デリバリーパイプラインのページ
+
   - https://console.cloud.google.com/deploy/delivery-pipelines?hl=ja&_ga=2.99582878.168409258.1673069602-660558282.1668514800&project=sample-328713
+
+- Skaffold コマンド。これ使う？
+  - Skaffold を使用してアプリをビルドする
+    - skaffold build
+  - Skaffold を使用してアプリを Cloud Run にデプロイする
+    - skaffold deploy
 
 ## 関連記事・URL
 
@@ -172,6 +179,10 @@ Slack ワークスペースからのメッセージを listen して、対応す
   - https://cloud.google.com/deploy/docs?hl=ja
 - Cloud Deploy の概要
   - https://cloud.google.com/deploy?hl=ja
+- デプロイに全集中！新サービス Cloud Deploy
+  - https://medium.com/google-cloud-jp/cloud-deploy-397c8a7c68c0
+- Cloud Deploy 実践編: CI との連携
+  - https://medium.com/google-cloud-jp/cloud-deploy-%E5%AE%9F%E8%B7%B5%E7%B7%A8-ci-%E3%81%A8%E3%81%AE%E9%80%A3%E6%90%BA-c22a6bc96286
 
 ## 使用技術
 
@@ -230,6 +241,7 @@ curl https://api.openai.com/v1/completions \
 
 - 曖昧な部分を残さない
 - 全て腹落ちして完全に理解する
+- Cloud Deploy とか Skaffold とかもブログにまとめる
 
 7. [] ローカルの環境構築自動化シェルスクリプトを作る
 
