@@ -7,3 +7,5 @@ spec:
     spec:
       containers:
         - image: my-app-image #このサービスでデプロイするコンテナ イメージ
+  auth:
+    allowUnauthenticated: true
