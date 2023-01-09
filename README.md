@@ -116,7 +116,8 @@ Slack ワークスペースからのメッセージを listen して、対応す
 6. これで本番環境で検証ができるようになるはず
 
 - Slack からメッセージを送れば返すようになる
-- ## 403 になった場合
+- 403 になった場合
+  - Cloud Run アプリに対するアクセス権がないので、付与すれば良い
 
 ### Cloud Deploy を使った自動デプロイ
 
@@ -246,9 +247,7 @@ curl https://api.openai.com/v1/completions \
 
 - とりあえず Cloud Run に普通のデプロイ -> Slack から叩けることを確認 -> Cloud Deploy でやってみる
 - コードを main にマージしたときに
-- デプロイした Cloud Run でアプリが正常に動作すればゴール
-- 認証のところがうまくいかない。。
-  - もうちょい粘る。。
+- (イマココ)GitHub Actions に組み込む
 
 4. [] .env を Dockerfile 上で生成できるようにしたい
 
@@ -262,6 +261,7 @@ curl https://api.openai.com/v1/completions \
 
 - 曖昧な部分を残さない
 - 全て腹落ちして完全に理解する
+- 全てをブログにまとめる
 - Cloud Deploy とか Skaffold とかもブログにまとめる
 - GCP の Service Account とか IAM をちゃんと調べる
   - 他の Cloud にも応用できる
