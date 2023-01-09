@@ -99,12 +99,15 @@ Slack ワークスペースからのメッセージを listen して、対応す
 2. Dockerfile 作成
 3. アプリ image の build と push
 
-- gcloud builds submit --project sample-328713 --tag gcr.io/sample-328713/test
+- gcloud builds submit --project sample-328713 --tag gcr.io/sample-328713/slack-chatgpt-2
 - 一時的に.gitignore から.env を外しておく
 
 4. Cloud Run へのデプロイ
 
-- gcloud beta run deploy --image gcr.io/sample-328713/test3 --platform managed
+- gcloud run deploy --image gcr.io/sample-328713/slack-chatgpt-2 --allow-unauthenticated --platform managed
+  - --allow-unauthenticated
+    - サービスを公開してアクセス可能にする
+      - https://cloud.google.com/run/docs/authenticating/public?hl=ja#gcloud
 
 5. Request URL に Cloud Run の URL を設定する
 
@@ -113,6 +116,7 @@ Slack ワークスペースからのメッセージを listen して、対応す
 6. これで本番環境で検証ができるようになるはず
 
 - Slack からメッセージを送れば返すようになる
+- ## 403 になった場合
 
 ### Cloud Deploy を使った自動デプロイ
 
@@ -137,11 +141,15 @@ Slack ワークスペースからのメッセージを listen して、対応す
 - リリースは、デプロイされる変更を表す中央の Google Cloud Deploy リソースです。デリバリー パイプラインは、そのリリースのライフサイクルを定義します
 - デプロイするコンテナ イメージを表す release リソースを作成
 
-  - gcloud deploy releases create test-release-002 \
+  - gcloud deploy releases create test-release-006 \
     --project=sample-328713 \
     --region=us-central1 \
     --delivery-pipeline=my-run-demo-app-1 \
-    --images=my-app-image=gcr.io/cloudrun/hello #ここにデプロイしたイメージを指定
+    --images=my-app-image=gcr.io/sample-328713/slack-chatgpt-2 #ここにデプロイしたイメージを指定
+    --allow-unauthenticated
+    <!-- --allow-unauthenticated #これではダメっぽい。。どうするんや。。 -->
+    <!-- ↑これはあり？ -->
+    <!-- --images=my-app-image=gcr.io/cloudrun/hello #ここにデプロイしたイメージを指定 -->
 
 5. クリーンアップ
 
@@ -183,6 +191,8 @@ Slack ワークスペースからのメッセージを listen して、対応す
   - https://medium.com/google-cloud-jp/cloud-deploy-397c8a7c68c0
 - Cloud Deploy 実践編: CI との連携
   - https://medium.com/google-cloud-jp/cloud-deploy-%E5%AE%9F%E8%B7%B5%E7%B7%A8-ci-%E3%81%A8%E3%81%AE%E9%80%A3%E6%90%BA-c22a6bc96286
+- Google Cloud Deploy でデリバリーしてみた
+  - https://blog.grasys.io/post/izumi/gcd/
 
 ## 使用技術
 
@@ -226,6 +236,7 @@ curl https://api.openai.com/v1/completions \
 
 3. [] Cloud Deploy で Cloud Run に自動デプロイできるようにする
 
+- とりあえず Cloud Run に普通のデプロイ -> Slack から叩けることを確認 -> Cloud Deploy でやってみる
 - コードを main にマージしたときに
 - デプロイした Cloud Run でアプリが正常に動作すればゴール
 

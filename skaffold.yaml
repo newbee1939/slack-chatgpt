@@ -6,7 +6,7 @@ build:
   local:
     push: true #GCRにbuildしたimageをpushする
   artifacts:
-    - image: gcr.io/sample-328713/slack-chatgpt
+    - image: gcr.io/sample-328713/slack-chatgpt #ここにpushする？
       context: .
       docker:
         dockerfile: Dockerfile
@@ -17,3 +17,5 @@ profiles:
         - run-prod.yaml #Cloud Runサービス定義の名前を指定。任意の数の成果物を"リリース"としてまとめる
 deploy:
   cloudrun: {}
+  # options:
+  #   allowUnauthenticated: true #未認証のアクセスを許可する
