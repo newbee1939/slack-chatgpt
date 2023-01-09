@@ -141,21 +141,29 @@ Slack ワークスペースからのメッセージを listen して、対応す
 - リリースは、デプロイされる変更を表す中央の Google Cloud Deploy リソースです。デリバリー パイプラインは、そのリリースのライフサイクルを定義します
 - デプロイするコンテナ イメージを表す release リソースを作成
 
-  - gcloud deploy releases create test-release-006 \
+  - gcloud deploy releases create test-release-011 \
     --project=sample-328713 \
     --region=us-central1 \
     --delivery-pipeline=my-run-demo-app-1 \
     --images=my-app-image=gcr.io/sample-328713/slack-chatgpt-2 #ここにデプロイしたイメージを指定
-    --allow-unauthenticated
+    <!-- --allow-unauthenticated -->
     <!-- --allow-unauthenticated #これではダメっぽい。。どうするんや。。 -->
     <!-- ↑これはあり？ -->
     <!-- --images=my-app-image=gcr.io/cloudrun/hello #ここにデプロイしたイメージを指定 -->
 
-5. クリーンアップ
+5. 公開（未認証）アクセスを許可する
+
+- デプロイした後でええか。。
+
+- https://cloud.google.com/run/docs/authenticating/public?hl=ja#yaml
+- gcloud run services set-iam-policy deploy-qs-prod-2 policy.yaml
+- とりあえずこれでできた
+
+6. クリーンアップ
 
 - deploy-qs-dev Cloud Run サービスを削除
 
-  - gcloud run services delete deploy-qs-prod --region=us-central1 --project=sample-328713
+  - gcloud run services delete deploy-qs-prod-2 --region=us-central1 --project=sample-328713
 
 - リリースとロールアウトを含む、デリバリー パイプラインを削除
 
@@ -239,6 +247,8 @@ curl https://api.openai.com/v1/completions \
 - とりあえず Cloud Run に普通のデプロイ -> Slack から叩けることを確認 -> Cloud Deploy でやってみる
 - コードを main にマージしたときに
 - デプロイした Cloud Run でアプリが正常に動作すればゴール
+- 認証のところがうまくいかない。。
+  - もうちょい粘る。。
 
 4. [] .env を Dockerfile 上で生成できるようにしたい
 
@@ -253,6 +263,9 @@ curl https://api.openai.com/v1/completions \
 - 曖昧な部分を残さない
 - 全て腹落ちして完全に理解する
 - Cloud Deploy とか Skaffold とかもブログにまとめる
+- GCP の Service Account とか IAM をちゃんと調べる
+  - 他の Cloud にも応用できる
+  - AWS の本とかも読む
 
 7. [] ローカルの環境構築自動化シェルスクリプトを作る
 

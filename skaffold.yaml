@@ -14,7 +14,7 @@ profiles:
   - name: prod
     manifests:
       rawYaml:
-        - run-prod.yaml #Cloud Runサービス定義の名前を指定。任意の数の成果物を"リリース"としてまとめる
+        - service.yaml #Cloud Runサービス定義の名前を指定。任意の数の成果物を"リリース"としてまとめる
 deploy:
   cloudrun: {}
   # options:

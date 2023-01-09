@@ -1,11 +1,11 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: deploy-qs-prod #この Cloud Run サービスの名前
+  name: deploy-qs-prod-2 #この Cloud Run サービスの名前
 spec:
   template:
     spec:
       containers:
         - image: my-app-image #このサービスでデプロイするコンテナ イメージ
-  auth:
+  securityContext:
     allowUnauthenticated: true
