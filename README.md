@@ -270,3 +270,5 @@ curl https://api.openai.com/v1/completions \
 7. [] ローカルの環境構築自動化シェルスクリプトを作る
 
 8. [] 会社の Slack に導入する
+
+9. [] 全てのコードを完全に理解する
