@@ -1,0 +1,27 @@
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Cloud SDK
+        uses: actions/setup-gcloud@v2
+        with:
+          version: 305.0.0
+          service-account-email: SERVICE_ACCOUNT_EMAIL
+          service-account-key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud auth activate-service-account --key-file=client-secret.json
+          gcloud config set project PROJECT_ID
+          gcloud run deploy SERVICE_NAME --image=gcr.io/PROJECT_ID/IMAGE_NAME --platform=managed --allow-unauthenticated
