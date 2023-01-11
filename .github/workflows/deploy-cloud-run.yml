@@ -3,7 +3,7 @@ name: Deploy to Cloud Run
 on:
   push:
     branches:
-      # - main
+      - main
 
 jobs:
   deploy:
@@ -20,8 +20,13 @@ jobs:
       #     service-account-email: SERVICE_ACCOUNT_EMAIL
       #     service-account-key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
 
-      - name: Make Env File
-        - run: make env
+      - name: Create .env file
+        run: echo "VAR_NAME=${{ secrets.SECRET_NAME }}" > .env && echo "VAR_NAME2=${{ secrets.SECRET_NAME }}" >> .env
+
+      name: Check .env
+        run: |
+          ls 
+          pwd
 
       - name: Build And Push Docker Image
         run: gcloud builds submit --project sample-328713 --tag gcr.io/sample-328713/slack-chatgpt-2
