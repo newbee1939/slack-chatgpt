@@ -25,8 +25,9 @@ jobs:
 
       - name: Check .env
         run: |
-          ls 
+          ls -a 
           pwd
+          cat .env
 
       - name: Build And Push Docker Image
         run: gcloud builds submit --project sample-328713 --tag gcr.io/sample-328713/slack-chatgpt-2
