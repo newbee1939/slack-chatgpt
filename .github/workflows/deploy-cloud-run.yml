@@ -3,7 +3,7 @@ name: Deploy to Cloud Run
 on:
   push:
     branches:
-      - main
+      # - main
 
 jobs:
   deploy:
@@ -13,15 +13,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Cloud SDK
-        uses: actions/setup-gcloud@v2
-        with:
-          version: 305.0.0
-          service-account-email: SERVICE_ACCOUNT_EMAIL
-          service-account-key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+      # - name: Set up Cloud SDK
+      #   uses: actions/setup-gcloud@v2
+      #   with:
+      #     version: 305.0.0
+      #     service-account-email: SERVICE_ACCOUNT_EMAIL
+      #     service-account-key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+
+      - name: Make Env File
+        - run: make env
+
+      - name: Build And Push Docker Image
+        run: gcloud builds submit --project sample-328713 --tag gcr.io/sample-328713/slack-chatgpt-2
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud auth activate-service-account --key-file=client-secret.json
-          gcloud config set project PROJECT_ID
-          gcloud run deploy SERVICE_NAME --image=gcr.io/PROJECT_ID/IMAGE_NAME --platform=managed --allow-unauthenticated
+          gcloud deploy apply --file=clouddeploy.yaml --region=us-central1 --project=sample-328713
+          gcloud deploy releases create test-release-011 \
+            --project=sample-328713 \
+            --region=us-central1 \
+            --delivery-pipeline=my-run-demo-app-1 \
+            --images=my-app-image=gcr.io/sample-328713/slack-chatgpt-2
+
+          # gcloud auth activate-service-account --key-file=client-secret.json
+          # gcloud config set project PROJECT_ID
+          # gcloud run deploy SERVICE_NAME --image=gcr.io/PROJECT_ID/IMAGE_NAME --platform=managed --allow-unauthenticated
+
+      - name: Allow Unauthorized Access
+        run: gcloud run services set-iam-policy deploy-qs-prod-2 policy.yaml
